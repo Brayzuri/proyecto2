@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductoController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Rutas explícitas siguiendo el patrón de tu docente
+// Rutas 
 Route::get('/producto', [ProductoController::class, 'index']);
 Route::get('/producto/create', [ProductoController::class, 'create']);
 Route::post('/producto/store', [ProductoController::class, 'store']);

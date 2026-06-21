@@ -59,11 +59,11 @@ class ProductoController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'nombre'       => 'required|string|max:49',            // Corrección: max:49
-        'descripcion'  => 'required|string|max:249',           // Corrección: max:249
-        'precio'       => 'required|numeric|min:0',            // Corrección: numeric y que no sea negativo
-        'stock'        => 'required|integer|between:0,255',    // ¡Esto está perfecto!
-        'categoria_id' => 'required|exists:categorias,id',    // ¡Perfecto también!
+        'nombre'       => 'required|string|max:49',            
+        'descripcion'  => 'required|string|max:249',           
+        'precio'       => 'required|numeric|min:0',            
+        'stock'        => 'required|integer|between:0,255',    
+        'categoria_id' => 'required|exists:categorias,id',    
     ]);
 
     Producto::create($request->all());
@@ -80,7 +80,7 @@ class ProductoController extends Controller
     // 1. Buscar el producto por su ID
     $producto = Producto::find($id);
 
-    // 2. Validar que exista el registro al estilo de tu docente
+    // 2. Validar que exista el registro 
     if (!$producto) {
         echo "Producto no encontrado";
         return;
@@ -116,7 +116,7 @@ class ProductoController extends Controller
     // 2. Buscar el producto en la base de datos
     $producto = Producto::find($id);
 
-    // 3. Si no existe, mostrar el mensaje al estilo de tu docente
+    // 3. Si no existe, mostrar el mensaje 
     if (!$producto) {
         echo "Producto no encontrado";
         return;
@@ -129,14 +129,7 @@ class ProductoController extends Controller
     echo "Producto actualizado correctamente";
 }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy(string $id)
-    // {
-    //     //
-    // }
-    // Muestra la vista de confirmación de eliminación (Estilo de tu docente)
+    //formulario para la confirmacion
     public function deleteconfirm($id)
     {
         $producto = Producto::find($id);
@@ -153,7 +146,7 @@ class ProductoController extends Controller
         return view('productos/delete', $datos);
     }
 
-    // Realiza la eliminación física en la base de datos (Estilo de tu docente)
+    // Realiza la eliminación física en la base de datos 
     public function delete($id)
     {
         $producto = Producto::find($id);
@@ -177,7 +170,7 @@ class ProductoController extends Controller
     // 1. Buscamos el producto con su categoría asociada
     $producto = Producto::with('categoria')->find($id);
 
-    // 2. Si no existe, lanzamos el mensaje clásico de tu docente
+    // 2. Si no existe, lanzamos el mensaje 
     if (!$producto) {
         echo "Producto no encontrado";
         return;
